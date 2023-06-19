@@ -3,6 +3,7 @@ import graphChain from './chain'
 
 // Contract addresses
 import * as DEPLOYED_CONTRACTS from '@graphprotocol/contracts/addresses.json'
+import localContractsByChain from '../assets/contracts.json'
 
 // Contract ABIs
 import { Curation } from '@graphprotocol/contracts/dist/types/Curation'
@@ -72,7 +73,10 @@ export const connectContracts = async (
   chainId: number,
 ): Promise<NetworkContracts> => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const deployedContracts = (DEPLOYED_CONTRACTS as any)[`${chainId}`]
+  const deployedContracts = (
+      Object.assign(DEPLOYED_CONTRACTS, localContractsByChain) as any
+  )[`${chainId}`]
+
   const GraphTokenFactory = GraphChain.isL1(chainId)
     ? GraphToken__factory
     : L2GraphToken__factory

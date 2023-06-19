@@ -15,6 +15,7 @@ const chainMap = new MapWithGetKey<number>([
   [4, 421611], // Ethereum Rinkeby - Arbitrum Rinkeby
   [5, 421613], // Ethereum Goerli - Arbitrum Goerli
   [1337, 412346], // Localhost - Arbitrum Localhost
+  [3243243243, 3243243243],
 ])
 
 export const l1Chains = Array.from(chainMap.keys())

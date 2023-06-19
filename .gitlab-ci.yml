@@ -1,0 +1,17 @@
+image: node:latest
+
+
+stages:
+    - build
+
+
+build:
+    stage: build
+    variables:
+        NPM_TOKEN: ${CI_JOB_TOKEN}
+    script:
+        - yarn
+        - yarn prepublish
+        - yarn publish
+    tags:
+      - "tokend"
